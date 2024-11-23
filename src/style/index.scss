@@ -1,0 +1,167 @@
+/* Variables */
+$font-stack: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+  "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+$primary-color: rgb(17, 17, 17);
+$text-color: rgb(245, 245, 245);
+$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $font-stack;
+  font-weight: 700;
+  ::-webkit-scrollbar {
+    width: 8px; /* Largeur de la scrollbar */
+    height: 8px; /* Hauteur de la scrollbar pour les scrollbars horizontales */
+  }
+
+  /* Partie de la scrollbar (la barre en elle-même) */
+  ::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Couleur gris clair */
+    border-radius: 10px; /* Coins arrondis */
+    border: 2px solid white; /* Bordure blanche pour un effet de séparation */
+  }
+
+  /* Partie de la scrollbar (la zone de glissement) */
+  ::-webkit-scrollbar-track {
+    background-color: white; /* Fond de la zone de défilement */
+    border-radius: 10px; /* Coins arrondis */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.card-display {
+  .card.active ~ .card {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+  }
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center; /* Centre les cartes horizontalement */
+  ::-webkit-scrollbar {
+    width: 0; /* Largeur de la scrollbar */
+    height: 0; /* Hauteur de la scrollbar pour les scrollbars horizontales */
+    display: none;
+  }
+}
+
+.card {
+  flex: 1 0 30%;
+  max-width: 370px;
+  border: 1px solid $primary-color;
+  margin: 5px;
+  color: $primary-color;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+
+  img {
+    height: 200px;
+    width: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    padding: 10px 0;
+  }
+
+  h3 {
+    font-weight: 400;
+  }
+  h4 {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.4s ease;
+      color: #605b5b;
+    }
+  }
+
+  &.active {
+    overflow: scroll;
+    background: whitesmoke;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    min-width: 600px;
+    height: 80vh;
+    z-index: 10;
+    box-shadow: $box-shadow;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    span {
+      position: absolute;
+      transform: translateX(260px);
+      &:hover {
+        cursor: pointer;
+        transform: translateX(260px) scale(1.07);
+      }
+    }
+    img {
+      height: 270px;
+      width: 330px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      padding: 10px 0;
+    }
+    h5 {
+      display: inline-block;
+    }
+
+    h3 {
+      margin-top: 11px;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .recipe {
+      font-weight: 300;
+    }
+    a {
+      cursor: pointer;
+      margin-top: 25px;
+      font-size: 0.8rem;
+      color: black;
+    }
+  }
+}
+
+input[type="search"],
+select {
+  border-radius: 10px;
+  padding: 5px 10px;
+  width: 380px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+}
+
+button {
+  height: 30px;
+  width: 70px;
+  border-radius: 10px;
+}
+
+.inputs-part {
+  display: flex;
+  justify-content: center;
+  height: 16em;
+  margin: 2vh auto;
+}
