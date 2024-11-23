@@ -32,7 +32,7 @@ const CardDisplay = ({ meal, selectedCategory }) => {
             }
           })
 
-          .map((m, index) => <Card key={index} meal={m} />)
+          .map((meal, index) => <Card key={index} meal={meal} />)
       ) : (
         <h2>No meal found</h2>
       )}
