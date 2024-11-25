@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Card = ({ meal }) => {
   const [isActive, setIsActive] = useState(false);
+  const cardRef = useRef(null);
 
+  // Fonction pour désactiver l'état actif lorsqu'on clique en dehors de la carte
+  const delIsActive = (e) => {
+    if (cardRef.current && !cardRef.current.contains(e.target)) {
+      setIsActive(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isActive) {
+      document.body.addEventListener("click", delIsActive);
+    }
+    return () => {
+      document.body.removeEventListener("click", delIsActive);
+    };
+  }, [isActive]);
+
+  // Fonction pour activer/désactiver l'état actif
   const handleClick = () => {
-    setIsActive(!isActive);
+    setIsActive((prevState) => !prevState);
   };
 
   return (
-    <div className={`card ${isActive ? "active" : ""}`}>
+    <div ref={cardRef} className={`card ${isActive ? "active" : ""}`}>
       {/* Bouton pour fermer les détails */}
       <span onClick={() => setIsActive(false)}>{isActive ? "X" : ""}</span>
 

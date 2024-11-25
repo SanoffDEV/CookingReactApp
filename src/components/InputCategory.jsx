@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 const InputCategory = ({
   meal,
@@ -9,9 +9,7 @@ const InputCategory = ({
   setSelectedCategory,
 }) => {
   useEffect(() => {
-    if (meal.length > 0) {
-      setInputValue(meal.length);
-    }
+    setInputValue(meal.length > 0 ? meal.length : 1);
   }, [meal]);
 
   const mealCategories = [
@@ -30,6 +28,7 @@ const InputCategory = ({
     { idCategory: 13, strCategory: "Breakfast" },
     { idCategory: 14, strCategory: "Goat" },
   ];
+
   return (
     <div className="inputs-part">
       <div className="inputs">
@@ -39,7 +38,7 @@ const InputCategory = ({
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <div className="number-input">
-          <span>{inputValue / inputValue} </span>
+          <span>1</span>
           <input
             type="range"
             min="1"
@@ -50,10 +49,8 @@ const InputCategory = ({
           <span>{inputValue} Meals</span>
         </div>
         <select onChange={(e) => setSelectedCategory(e.target.value)}>
-          <option value="" disabled={true}>
-            All categories
-          </option>
-          {mealCategories?.map((category) => (
+          <option value="">All categories</option>
+          {mealCategories.map((category) => (
             <option key={category.idCategory} value={category.strCategory}>
               {category.strCategory}
             </option>
