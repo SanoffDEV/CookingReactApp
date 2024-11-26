@@ -14,7 +14,7 @@ const App = () => {
         );
         setMealData(res.data.meals || []);
       } catch (error) {
-        console.error("Erreur lors de la récupération des données :", error);
+        console.error("Erreur lors de la récupération des données ! :", error);
       }
     };
 
