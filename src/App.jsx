@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 
 const App = () => {
   const [mealData, setMealData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("Chicken"); // Recherche par défaut
+  const [searchQuery, setSearchQuery] = useState("beef"); // Recherche par défaut
 
   useEffect(() => {
     const fetchData = async () => {
