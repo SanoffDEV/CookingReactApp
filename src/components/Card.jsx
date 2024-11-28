@@ -59,7 +59,7 @@ const Card = ({ meal }) => {
           <h3>Recipe</h3>
           <div className="recipe">{meal.strInstructions}</div>
 
-          {/* Lien vers la vidéo */}
+          {/* Lien vers la vidéo ytb */}
           <a href={meal.strYoutube} target="_blank" rel="noopener noreferrer">
             Learn in Video!
           </a>
